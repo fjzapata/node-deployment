@@ -6,6 +6,7 @@ import userRoutes from "./routes/user.routes";
 import { createRoles, createAdmin } from "./libs/initialSetup";
 import path from 'path'
 import './config'
+import cors from 'cors'
 
 // Swagger
 import swaggerUI from 'swagger-ui-express'
@@ -51,6 +52,9 @@ app.get("/", (req, res) => {
 
 
 // Routes
+app.use(cors({
+  origin: 'http://localhost:5173'
+}))
 app.use("/api/request", requestRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);

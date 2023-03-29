@@ -11,6 +11,8 @@ var _auth = _interopRequireDefault(require("./routes/auth.routes"));
 var _user = _interopRequireDefault(require("./routes/user.routes"));
 var _initialSetup = require("./libs/initialSetup");
 var _path = _interopRequireDefault(require("path"));
+require("./config");
+var _cors = _interopRequireDefault(require("cors"));
 var _swaggerUiExpress = _interopRequireDefault(require("swagger-ui-express"));
 var _swaggerJsdoc = _interopRequireDefault(require("swagger-jsdoc"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -54,6 +56,9 @@ app.get("/", function (req, res) {
 });
 
 // Routes
+app.use((0, _cors["default"])({
+  origin: 'http://localhost:5173'
+}));
 app.use("/api/request", _request["default"]);
 app.use("/api/auth", _auth["default"]);
 app.use("/api/users", _user["default"]);
