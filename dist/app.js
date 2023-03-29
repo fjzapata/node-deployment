@@ -57,7 +57,8 @@ app.get("/", function (req, res) {
 
 // Routes
 app.use((0, _cors["default"])({
-  origin: 'http://localhost:5173'
+  origin: 'http://localhost:5173',
+  credentials: true
 }));
 app.use("/api/request", _request["default"]);
 app.use("/api/auth", _auth["default"]);
