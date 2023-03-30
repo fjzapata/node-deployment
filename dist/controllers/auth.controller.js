@@ -15,14 +15,14 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var signUp = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(req, res) {
-    var _req$body, _username, cedula, password, roles, newUser, foundRoles, role, savedUser, token;
+    var _req$body, username, cedula, password, roles, newUser, foundRoles, role, savedUser, response, token;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          _req$body = req.body, _username = _req$body.username, cedula = _req$body.cedula, password = _req$body.password, roles = _req$body.roles;
+          _req$body = req.body, username = _req$body.username, cedula = _req$body.cedula, password = _req$body.password, roles = _req$body.roles;
           _context.t0 = _User["default"];
-          _context.t1 = _username;
+          _context.t1 = username;
           _context.t2 = cedula;
           _context.next = 7;
           return _User["default"].encryptPassword(password);
@@ -64,6 +64,9 @@ var signUp = /*#__PURE__*/function () {
           return newUser.save();
         case 23:
           savedUser = _context.sent;
+          response = {
+            username: savedUser.username
+          };
           token = _jsonwebtoken["default"].sign({
             id: savedUser._id
           }, _config["default"].SECRET, {
@@ -72,21 +75,21 @@ var signUp = /*#__PURE__*/function () {
 
           res.status(200).json({
             token: token,
-            username: _username
+            response: response
           });
-          _context.next = 31;
+          _context.next = 32;
           break;
-        case 28:
-          _context.prev = 28;
+        case 29:
+          _context.prev = 29;
           _context.t5 = _context["catch"](0);
           return _context.abrupt("return", res.status(500).json({
             message: "Something goes wrong"
           }));
-        case 31:
+        case 32:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 28]]);
+    }, _callee, null, [[0, 29]]);
   }));
   return function signUp(_x, _x2) {
     return _ref.apply(this, arguments);
@@ -95,7 +98,7 @@ var signUp = /*#__PURE__*/function () {
 exports.signUp = signUp;
 var signIn = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(req, res) {
-    var userFound, matchPassword, token;
+    var userFound, matchPassword, token, response;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
@@ -132,24 +135,26 @@ var signIn = /*#__PURE__*/function () {
           }, _config["default"].SECRET, {
             expiresIn: 1800 // 30 min
           });
-
+          response = {
+            username: userFound.username
+          };
           res.json({
             token: token,
-            username: username
+            response: response
           });
-          _context2.next = 18;
+          _context2.next = 19;
           break;
-        case 15:
-          _context2.prev = 15;
+        case 16:
+          _context2.prev = 16;
           _context2.t0 = _context2["catch"](0);
           return _context2.abrupt("return", res.status(500).json({
             message: "Something goes wrong"
           }));
-        case 18:
+        case 19:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 15]]);
+    }, _callee2, null, [[0, 16]]);
   }));
   return function signIn(_x3, _x4) {
     return _ref2.apply(this, arguments);

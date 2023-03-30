@@ -22,12 +22,15 @@ export const signUp = async (req, res) => {
     }
 
     const savedUser = await newUser.save();
+    const response = {
+      username: savedUser.username
+    }
 
     const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
       expiresIn: 1800, // 30 min
     });
 
-    res.status(200).json({ token, username });
+    res.status(200).json({ token, response });
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
   }
@@ -52,7 +55,12 @@ export const signIn = async (req, res) => {
     const token = jwt.sign({ id: userFound._id }, config.SECRET, {
       expiresIn: 1800, // 30 min
     });
-    res.json({ token, username });
+
+    const response = {
+      username: userFound.username
+    }
+
+    res.json({ token, response });
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
   }
