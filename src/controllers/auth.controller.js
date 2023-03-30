@@ -27,7 +27,7 @@ export const signUp = async (req, res) => {
       expiresIn: 1800, // 30 min
     });
 
-    res.status(200).json({ token });
+    res.status(200).json({ token, username });
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
   }
@@ -52,7 +52,7 @@ export const signIn = async (req, res) => {
     const token = jwt.sign({ id: userFound._id }, config.SECRET, {
       expiresIn: 1800, // 30 min
     });
-    res.json({ token });
+    res.json({ token, username });
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
   }

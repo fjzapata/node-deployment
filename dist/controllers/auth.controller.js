@@ -15,14 +15,14 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var signUp = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(req, res) {
-    var _req$body, username, cedula, password, roles, newUser, foundRoles, role, savedUser, token;
+    var _req$body, _username, cedula, password, roles, newUser, foundRoles, role, savedUser, token;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          _req$body = req.body, username = _req$body.username, cedula = _req$body.cedula, password = _req$body.password, roles = _req$body.roles;
+          _req$body = req.body, _username = _req$body.username, cedula = _req$body.cedula, password = _req$body.password, roles = _req$body.roles;
           _context.t0 = _User["default"];
-          _context.t1 = username;
+          _context.t1 = _username;
           _context.t2 = cedula;
           _context.next = 7;
           return _User["default"].encryptPassword(password);
@@ -71,7 +71,8 @@ var signUp = /*#__PURE__*/function () {
           });
 
           res.status(200).json({
-            token: token
+            token: token,
+            username: _username
           });
           _context.next = 31;
           break;
@@ -133,7 +134,8 @@ var signIn = /*#__PURE__*/function () {
           });
 
           res.json({
-            token: token
+            token: token,
+            username: username
           });
           _context2.next = 18;
           break;
