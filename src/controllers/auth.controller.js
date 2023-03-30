@@ -39,7 +39,7 @@ export const signIn = async (req, res) => {
       "roles"
     );
 
-    if (!userFound) return res.json({ message: "User not found" });
+    if (!userFound) return res.json({ message: "El usuario no existe" });
 
     const matchPassword = await User.comparePassword(
       req.body.password,
@@ -47,7 +47,7 @@ export const signIn = async (req, res) => {
     );
 
     if (!matchPassword)
-      return res.status(401).json({ token: null, message: "Invalid Password" });
+      return res.status(401).json({ token: null, message: "Contraseña incorrecta" });
 
     const token = jwt.sign({ id: userFound._id }, config.SECRET, {
       expiresIn: 1800, // 30 min

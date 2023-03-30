@@ -110,7 +110,7 @@ var signIn = /*#__PURE__*/function () {
             break;
           }
           return _context2.abrupt("return", res.json({
-            message: "User not found"
+            message: "El usuario no existe"
           }));
         case 6:
           _context2.next = 8;
@@ -123,7 +123,7 @@ var signIn = /*#__PURE__*/function () {
           }
           return _context2.abrupt("return", res.status(401).json({
             token: null,
-            message: "Invalid Password"
+            message: "Contraseña incorrecta"
           }));
         case 11:
           token = _jsonwebtoken["default"].sign({

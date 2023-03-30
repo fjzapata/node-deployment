@@ -3,11 +3,11 @@ import User from "../models/User";
 
 export const checkDuplicateUsernameOrDNI = async (req, res, next) => {
   const user = await User.findOne({ username: req.body.username });
-  if (user) return res.status(400).json({ message: "the user already exists" });
+  if (user) return res.status(400).json({ message: "El usuario ya existe" });
 
   const cedula = await User.findOne({ cedula: req.body.cedula });
   if (cedula)
-    return res.status(400).json({ message: "the cedula already exists" });
+    return res.status(400).json({ message: "La cedula ya existe" });
 
   next();
 };

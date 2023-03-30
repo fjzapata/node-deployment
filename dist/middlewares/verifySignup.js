@@ -28,7 +28,7 @@ var checkDuplicateUsernameOrDNI = /*#__PURE__*/function () {
             break;
           }
           return _context.abrupt("return", res.status(400).json({
-            message: "the user already exists"
+            message: "El usuario ya existe"
           }));
         case 5:
           _context.next = 7;
@@ -42,7 +42,7 @@ var checkDuplicateUsernameOrDNI = /*#__PURE__*/function () {
             break;
           }
           return _context.abrupt("return", res.status(400).json({
-            message: "the cedula already exists"
+            message: "La cedula ya existe"
           }));
         case 10:
           next();
