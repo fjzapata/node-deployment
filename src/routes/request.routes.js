@@ -94,7 +94,7 @@ router.get("/", requestCtrl.getRequest);
  *      403:
  *         description: Token no provisionado
  */
-router.post("/", authJwt.verifyToken, requestCtrl.createRequest);
+router.post("/", requestCtrl.createRequest);
 
 /**
  * @swagger
