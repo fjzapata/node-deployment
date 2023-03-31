@@ -34,7 +34,7 @@ var router = (0, _express.Router)();
  *         description: Token no provisionado
  */
 
-router.get("/", _middlewares.authJwt.verifyToken, requestCtrl.getRequest);
+router.get("/", requestCtrl.getRequest);
 
 /**
  * @swagger

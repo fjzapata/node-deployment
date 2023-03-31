@@ -27,7 +27,7 @@ import { authJwt } from "../middlewares";
  *         description: Token no provisionado
  */
 
-router.get("/", authJwt.verifyToken, requestCtrl.getRequest);
+router.get("/", requestCtrl.getRequest);
 
 /**
  * @swagger
