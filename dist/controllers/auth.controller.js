@@ -113,7 +113,7 @@ var signIn = /*#__PURE__*/function () {
             _context2.next = 6;
             break;
           }
-          return _context2.abrupt("return", res.json({
+          return _context2.abrupt("return", res.status(401).json({
             message: "El usuario no existe"
           }));
         case 6:

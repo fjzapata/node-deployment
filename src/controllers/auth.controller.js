@@ -42,7 +42,7 @@ export const signIn = async (req, res) => {
       "roles"
     );
 
-    if (!userFound) return res.json({ message: "El usuario no existe" });
+    if (!userFound) return res.status(401).json({ message: "El usuario no existe" });
 
     const matchPassword = await User.comparePassword(
       req.body.password,
