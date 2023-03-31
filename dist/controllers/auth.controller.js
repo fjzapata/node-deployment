@@ -70,7 +70,7 @@ var signUp = /*#__PURE__*/function () {
           token = _jsonwebtoken["default"].sign({
             id: savedUser._id
           }, _config["default"].SECRET, {
-            expiresIn: 1800 // 30 min
+            expiresIn: 86400 // 30 min
           });
 
           res.status(200).json({
@@ -133,7 +133,7 @@ var signIn = /*#__PURE__*/function () {
           token = _jsonwebtoken["default"].sign({
             id: userFound._id
           }, _config["default"].SECRET, {
-            expiresIn: 1800 // 30 min
+            expiresIn: 86400 // 30 min
           });
           response = {
             username: userFound.username

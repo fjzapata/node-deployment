@@ -27,7 +27,7 @@ export const signUp = async (req, res) => {
     }
 
     const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
-      expiresIn: 1800, // 30 min
+      expiresIn: 86400, // 30 min
     });
 
     res.status(200).json({ token, response });
@@ -53,7 +53,7 @@ export const signIn = async (req, res) => {
       return res.status(401).json({ token: null, message: "Contraseña incorrecta" });
 
     const token = jwt.sign({ id: userFound._id }, config.SECRET, {
-      expiresIn: 1800, // 30 min
+      expiresIn: 86400, // 30 min
     });
 
     const response = {
