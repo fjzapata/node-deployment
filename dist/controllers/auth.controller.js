@@ -136,7 +136,8 @@ var signIn = /*#__PURE__*/function () {
             expiresIn: 86400 // 30 min
           });
           response = {
-            username: userFound.username
+            username: userFound.username,
+            role: userFound.roles
           };
           res.json({
             token: token,
