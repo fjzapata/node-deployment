@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 mongoose
   .connect(
     // `mongodb://${process.env.MONGOUSER}:${process.env.MONGOPASSWORD}@${process.env.MONGOHOST}:${process.env.MONGOPORT}`,
-    'mongodb://127.0.0.1:27017',
+    'mongodb://127.0.0.1:27017/BaseNaval',
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
