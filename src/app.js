@@ -54,6 +54,7 @@ app.get("/", (req, res) => {
 // Routes
 app.use(cors({
   origin: 'https://permisosgrumetesarc.netlify.app',
+  // origin: 'http://localhost:5173',
   credentials: true,
 }))
 app.use("/api/request", requestRoutes);

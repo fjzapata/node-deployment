@@ -22,8 +22,10 @@ export const signUp = async (req, res) => {
     }
 
     const savedUser = await newUser.save();
+    const [idUser] = savedUser.roles.map(base => base._id)
     const response = {
-      username: savedUser.username
+      username: savedUser.username,
+      idUser
     }
 
     const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
@@ -56,9 +58,13 @@ export const signIn = async (req, res) => {
       expiresIn: 86400, // 30 min
     });
 
+    const [idUser] = userFound.roles.map(base => base._id)
+
     const response = {
       username: userFound.username,
-      role: userFound.roles
+      // role: userFound.roles.map(base => base._id)
+      idUser
+      
     }
 
     res.json({ token, response });
