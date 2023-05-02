@@ -159,7 +159,7 @@ router.get("/:requestId", authJwt.verifyToken, requestCtrl.getRequestById);
  *        description: User no found
  */
 
-router.put("/:requestId", authJwt.verifyToken, requestCtrl.updateRequestById);
+router.put("/:requestId", requestCtrl.updateRequestById);
 
 /**
  * @swagger

@@ -166,7 +166,7 @@ router.get("/:requestId", _middlewares.authJwt.verifyToken, requestCtrl.getReque
  *        description: User no found
  */
 
-router.put("/:requestId", _middlewares.authJwt.verifyToken, requestCtrl.updateRequestById);
+router.put("/:requestId", requestCtrl.updateRequestById);
 
 /**
  * @swagger
