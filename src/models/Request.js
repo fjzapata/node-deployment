@@ -14,6 +14,7 @@ const requestSchema = new Schema(
     tiempoDesde: Date,
     hasta: Date,
     estado: String,
+    admin: String
   },
   {
     timestamps: true,

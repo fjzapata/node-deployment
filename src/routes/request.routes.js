@@ -29,6 +29,9 @@ import { authJwt } from "../middlewares";
 
 router.get("/", requestCtrl.getRequest);
 
+
+router.get("/admin/:requestId", requestCtrl.getRequestAdmin);
+
 /**
  * @swagger
  * components:
@@ -69,7 +72,10 @@ router.get("/", requestCtrl.getRequest);
  *        hasta:
  *           type: date
  *           description: hora de llegada
- */ 
+ *        admin:
+ *           type: string
+ *           description: administrador el cual llega la solicitud
+ */
 
 /**
  * @swagger
@@ -186,5 +192,8 @@ router.delete(
   authJwt.verifyToken,
   requestCtrl.deleteRequestById
 );
+
+
+router.get("/notification/:requestId", authJwt.verifyToken, requestCtrl.getNotification);
 
 export default router;

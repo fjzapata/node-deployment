@@ -14,6 +14,7 @@ export const createRequest = async (req, res) => {
       lugar,
       tiempoDesde,
       hasta,
+      admin
     } = req.body;
 
     const newRequest = new Request({
@@ -29,6 +30,7 @@ export const createRequest = async (req, res) => {
       tiempoDesde,
       hasta,
       estado: "Pendiente",
+      admin
     });
 
     const requestSave = await newRequest.save();
@@ -42,6 +44,24 @@ export const createRequest = async (req, res) => {
 export const getRequest = async (req, res) => {
   try {
     const requests = await Request.find();
+    res.json(requests);
+  } catch (error) {
+    return res.status(500).json({ message: "Something goes wrong" });
+  }
+};
+
+export const getRequestAdmin = async (req, res) => {
+  try {
+    const requests = await Request.find({ admin: req.params.requestId });
+    res.json(requests);
+  } catch (error) {
+    return res.status(500).json({ message: "Something goes wrong" });
+  }
+};
+
+export const getNotification = async (req, res) => {
+  try {
+    const requests = await Request.find({ admin: req.params.requestId }, { estado: 'Pendiente' });
     res.json(requests);
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });
