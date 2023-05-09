@@ -194,6 +194,6 @@ router.delete(
 );
 
 
-router.get("/notification/:requestId", authJwt.verifyToken, requestCtrl.getNotification);
+router.get("/notification/:requestId", requestCtrl.getNotification);
 
 export default router;
