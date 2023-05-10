@@ -61,7 +61,7 @@ export const getRequestAdmin = async (req, res) => {
 
 export const getNotification = async (req, res) => {
   try {
-    const requests = await Request.find({ admin: req.params.requestId }, { estado: 'Pendiente' });
+    const requests = await Request.find({ admin: req.params.requestId, estado: 'Pendiente' });
     res.json(requests);
   } catch (error) {
     return res.status(500).json({ message: "Something goes wrong" });

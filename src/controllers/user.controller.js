@@ -6,7 +6,7 @@ export const createUser = (req, res) => {
 
 export const getReqAdmin = async (req, res) => {
     try {
-        const requests = await User.find({ roles: { $in: [ObjectId('644bb91feff1cda3d5f1fc69')] } });
+        const requests = await User.find({ roles: { $in: ['644bb91feff1cda3d5f1fc69'] } });
         res.json(requests);
     } catch (error) {
         return res.status(500).json({ message: "Something goes wrong" });

@@ -24,6 +24,7 @@ export const signUp = async (req, res) => {
     const savedUser = await newUser.save();
     const [idUser] = savedUser.roles.map(base => base._id)
     const response = {
+      id: savedUser._id,
       username: savedUser.username,
       idUser
     }
@@ -61,10 +62,9 @@ export const signIn = async (req, res) => {
     const [idUser] = userFound.roles.map(base => base._id)
 
     const response = {
+      id: userFound._id,
       username: userFound.username,
-      // role: userFound.roles.map(base => base._id)
       idUser
-      
     }
 
     res.json({ token, response });
